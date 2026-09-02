@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "ShiftLayer",
+  "version": "0.1.0",
+  "description": "Move page elements out of your way and keep them there.",
+  "minimum_chrome_version": "104",
+  "permissions": ["storage", "contextMenus"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "ShiftLayer",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["shared.js", "content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": []
+}

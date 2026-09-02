@@ -1,0 +1,9 @@
+.__shiftlayer_moving_target__ {
+  outline: 2px solid #b7ff5a !important;
+  outline-offset: 3px !important;
+  cursor: move !important;
+}
+
+.__shiftlayer_moving_target__ * {
+  cursor: move !important;
+}

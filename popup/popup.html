@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ShiftLayer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="brand">
+        <div class="logo" aria-hidden="true"><span></span></div>
+        <div>
+          <h1>ShiftLayer</h1>
+          <p>Your web. Your layout.</p>
+        </div>
+      </header>
+
+      <section id="status" class="status">Reading this page…</section>
+
+      <section id="content" hidden>
+        <div class="summary">
+          <div><strong id="siteCount">0</strong><span>on this site</span></div>
+          <div><strong id="pageCount">0</strong><span>on this page</span></div>
+        </div>
+
+        <div class="sectionHeading">
+          <h2>Moved elements</h2>
+          <span id="pagePath"></span>
+        </div>
+        <div id="list" class="list"></div>
+
+        <button id="resetSite" class="danger" type="button">Reset this site</button>
+      </section>
+
+      <footer>Right-click any page element → <strong>ShiftLayer · Move element</strong></footer>
+    </main>
+
+    <script src="../shared.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
