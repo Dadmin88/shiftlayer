@@ -10,3 +10,4 @@ Initial MVP.
 - Best-effort fingerprinting and dynamic DOM reapplication.
 - Popup with page/site counts and reset controls.
 - Zero analytics, zero network calls, zero runtime dependencies.
+- Added launch media, prominent looping README demo GIF, and GitHub Actions CI.
