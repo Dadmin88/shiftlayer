@@ -7,12 +7,12 @@
 **Your web. Your layout.**
 
 <p align="center">
-  <img src="assets/shiftlayer-demo.gif" alt="ShiftLayer demo — right-click a page element, move it, reload, and it stays there." width="320">
+  <img src="assets/shiftlayer-demo.gif" alt="ShiftLayer demo — right-click a page element, move it, reload, and it stays there." width="300">
 </p>
 
 <p align="center">
   <strong>Right-click → Move → Reload → Done.</strong><br>
-  <a href="assets/shiftlayer-demo.mp4">Watch the full-quality MP4</a>
+  <a href="assets/shiftlayer-demo.mp4">Watch the MP4 demo</a>
 </p>
 
 ShiftLayer is a local-first browser extension that lets you move annoying or inconvenient page elements without removing them. Right-click a button, toolbar, panel, or other element, choose **ShiftLayer · Move element**, drag it somewhere better, and ShiftLayer remembers the change for that page.
