@@ -7,7 +7,7 @@
 **Your web. Your layout.**
 
 <p align="center">
-  <img src="assets/shiftlayer-demo.gif" alt="ShiftLayer demo — right-click a page element, move it, reload, and it stays there." width="720">
+  <img src="assets/shiftlayer-demo.gif" alt="ShiftLayer demo — right-click a page element, move it, reload, and it stays there." width="480">
 </p>
 
 <p align="center">
