@@ -7,20 +7,23 @@
 **Your web. Your layout.**
 
 <p align="center">
-  <img src="assets/shiftlayer-launch.webp" alt="ShiftLayer — Move page elements. Keep them there." width="100%">
+  <img src="assets/shiftlayer-demo.gif" alt="ShiftLayer demo — right-click a page element, move it, reload, and it stays there." width="100%">
+</p>
+
+<p align="center">
+  <strong>Right-click → Move → Reload → Done.</strong><br>
+  <a href="assets/shiftlayer-demo.mp4">Watch the full-quality MP4</a>
 </p>
 
 ShiftLayer is a local-first browser extension that lets you move annoying or inconvenient page elements without removing them. Right-click a button, toolbar, panel, or other element, choose **ShiftLayer · Move element**, drag it somewhere better, and ShiftLayer remembers the change for that page.
 
 The website keeps the real DOM node and its event handlers. ShiftLayer applies a visual translation instead of re-parenting the element, which is significantly less likely to upset React, Vue, Svelte, or other framework-managed pages.
 
-## Demo
+## What it does
 
-▶ **[Watch the ShiftLayer demo](assets/shiftlayer-demo.mp4)**
-
-Right-click an element → **ShiftLayer · Move element** → drag it → reload. It stays where you put it.
-
-## MVP
+<p align="center">
+  <img src="assets/shiftlayer-launch.webp" alt="ShiftLayer — Move page elements. Keep them there." width="100%">
+</p>
 
 - Right-click any normal web-page element and choose **ShiftLayer · Move element**.
 - Drag the highlighted element, then drop it to save.
