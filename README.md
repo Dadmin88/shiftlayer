@@ -1,10 +1,24 @@
 # ShiftLayer
 
+[![Version](https://img.shields.io/badge/VERSION-v0.1.0-7e349d?style=flat-square)](CHANGELOG.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/Dadmin88/shiftlayer/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/Dadmin88/shiftlayer/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/LICENSE-MIT-4c1?style=flat-square)](LICENSE)
+
 **Your web. Your layout.**
+
+<p align="center">
+  <img src="assets/shiftlayer-launch.webp" alt="ShiftLayer — Move page elements. Keep them there." width="100%">
+</p>
 
 ShiftLayer is a local-first browser extension that lets you move annoying or inconvenient page elements without removing them. Right-click a button, toolbar, panel, or other element, choose **ShiftLayer · Move element**, drag it somewhere better, and ShiftLayer remembers the change for that page.
 
 The website keeps the real DOM node and its event handlers. ShiftLayer applies a visual translation instead of re-parenting the element, which is significantly less likely to upset React, Vue, Svelte, or other framework-managed pages.
+
+## Demo
+
+▶ **[Watch the ShiftLayer demo](assets/shiftlayer-demo.mp4)**
+
+Right-click an element → **ShiftLayer · Move element** → drag it → reload. It stays where you put it.
 
 ## MVP
 
@@ -53,11 +67,20 @@ Obvious hash-like/generated tokens are avoided. On restoration, ShiftLayer tries
 
 This is best-effort by design. Websites can change their markup at any time.
 
+## Install locally in Chromium
+
+1. Run `npm run build` if Node is available, or load the repository root directly.
+2. Open `chrome://extensions` or the equivalent extensions page in your Chromium-based browser.
+3. Enable **Developer mode**.
+4. Choose **Load unpacked**.
+5. Select the project's `dist/` directory if built, otherwise the repository root.
+6. Open a normal website, right-click an element, and choose **ShiftLayer · Move element**.
+
+For source-only iteration the repository root is valid. `dist/` is the canonical packaged build when Node is available.
+
 ## Development
 
-ShiftLayer has no runtime or build dependencies. The source files are valid extension files directly, and the build step copies the release set into `dist/`.
-
-Requirements: Node.js 20+ for local checks.
+ShiftLayer has no runtime or build dependencies. Requirements: Node.js 20+ for local checks.
 
 ```bash
 npm test
@@ -67,16 +90,7 @@ npm run build
 npm run check
 ```
 
-## Install locally in Chromium
-
-1. Run `npm run build` if Node is available, or load the repository root directly.
-2. Open `chrome://extensions` (or the equivalent extensions page in your Chromium-based browser).
-3. Enable **Developer mode**.
-4. Choose **Load unpacked**.
-5. Select the project's `dist/` directory if built, otherwise the repository root.
-6. Open a normal website, right-click an element, and choose **ShiftLayer · Move element**.
-
-For source-only iteration the repository root is valid. `dist/` is the canonical packaged build when Node is available.
+The GitHub Actions **CI** workflow runs `npm run check` on every push and pull request to `main`.
 
 ## Manual QA checklist
 
@@ -99,11 +113,10 @@ For source-only iteration the repository root is valid. `dist/` is the canonical
 ## Known limitations
 
 - Moving is visual, not layout-reflowing; the original layout slot remains occupied.
-- A site that itself uses the CSS individual `translate` property can have an edge-case conflict. ShiftLayer snapshots/restores inline translate and preserves common computed pixel translation, but highly dynamic translate animations are not guaranteed.
+- A site that itself uses the CSS individual `translate` property can have an edge-case conflict.
 - Major website redesigns can invalidate an element fingerprint.
-- Elements inside cross-origin iframes are governed by browser extension frame/host rules and are not a special-case target in v0.1.
-- Shadow DOM internals may be inaccessible depending on whether a site's shadow root is open or closed.
-- Firefox packaging/review details are not completed in v0.1, though the architecture intentionally stays close to the WebExtensions model.
+- Cross-origin iframes and closed Shadow DOMs are subject to normal browser-extension boundaries.
+- Firefox packaging/review details are not completed in v0.1.
 
 ## Roadmap
 
