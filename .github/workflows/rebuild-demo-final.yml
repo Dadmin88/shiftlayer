@@ -1,0 +1,35 @@
+name: Rebuild final demo GIF
+
+on:
+  push:
+    branches: [main]
+    paths: ['.rebuild-demo-final']
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build compact sharp GIF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -y -loglevel error -i assets/shiftlayer-demo.mp4 \
+            -vf "crop=426:282:106:22,fps=8,scale=320:-1:flags=lanczos,unsharp=5:5:1.0:3:3:0.35,palettegen=max_colors=256:stats_mode=full" \
+            /tmp/palette.png
+          ffmpeg -y -loglevel error -i assets/shiftlayer-demo.mp4 -i /tmp/palette.png \
+            -lavfi "crop=426:282:106:22,fps=8,scale=320:-1:flags=lanczos,unsharp=5:5:1.0:3:3:0.35[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=2" \
+            -loop 0 assets/shiftlayer-demo.gif
+
+      - name: Commit final demo and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/shiftlayer-demo.gif
+          git rm .rebuild-demo-final .github/workflows/rebuild-demo-final.yml
+          git commit -m "docs: sharpen compact README demo GIF"
+          git push
