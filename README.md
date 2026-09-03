@@ -66,7 +66,7 @@ A saved fingerprint prefers, in order:
 4. a small set of stable class names when unique
 5. a bounded `nth-of-type` CSS path fallback
 
-Obvious hash-like/generated tokens are avoided. On restoration, ShiftLayer tries saved selectors and scores ambiguous candidates against the saved attributes.
+Obvious hash-like/generated tokens are avoided. On restoration, ShiftLayer tries saved selectors in order and scores ambiguous matches using the saved attributes.
 
 This is best-effort by design. Websites can change their markup at any time.
 
