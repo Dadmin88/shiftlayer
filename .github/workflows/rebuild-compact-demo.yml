@@ -1,0 +1,35 @@
+name: Rebuild compact demo
+
+on:
+  push:
+    branches: [main]
+    paths: ['.rebuild-compact-demo']
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build native-size compact GIF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -y -i assets/shiftlayer-demo.mp4 \
+            -vf "crop=426:282:106:22,fps=8,scale=320:-1:flags=lanczos,palettegen=max_colors=256:stats_mode=full" \
+            /tmp/palette.png
+          ffmpeg -y -i assets/shiftlayer-demo.mp4 -i /tmp/palette.png \
+            -lavfi "crop=426:282:106:22,fps=8,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=sierra2_4a" \
+            -loop 0 assets/shiftlayer-demo.gif
+
+      - name: Commit final demo and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/shiftlayer-demo.gif
+          git rm .rebuild-compact-demo .github/workflows/rebuild-compact-demo.yml
+          git commit -m "docs: use compact native-size README demo"
+          git push
